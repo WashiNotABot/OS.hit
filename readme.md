@@ -1,5 +1,6 @@
 <!-- COMMAND LISTS -->
-docker build -t kimmy .
+docker build -t kimmy --name kimmy .
+docker run -h kimhan --name kimhan -it kimmy bash
 
 gcc csine.c -o hello -lm
 alias csine='/project/hello'
