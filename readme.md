@@ -1,5 +1,6 @@
 <!-- COMMAND LISTS -->
-docker build -t kimmy --name kimmy .
+docker build -t kimmy .
+_build docker file name kimmy in current path_
 docker run -h kimhan --name kimhan -it kimmy bash
 
 gcc csine.c -o hello -lm
