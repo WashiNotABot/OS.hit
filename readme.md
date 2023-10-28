@@ -2,7 +2,7 @@
 **docker build -t kimmy .**<br />
 _build docker file name kimmy in current path_<br />
 
-docker run -h kimhan --name kimhan -it kimmy bash
+docker run -h kimhan --name kimhan -it kimmy bash<br />
 _create new container name kimhan from build named kimmy assign host name is kimhan_
 
 
