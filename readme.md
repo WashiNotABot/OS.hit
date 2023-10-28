@@ -3,32 +3,31 @@
 _build docker file name kimmy in current path_<br />
 
 docker run -h kimhan --name kimhan -it kimmy bash<br />
-_create new container name kimhan from build named kimmy assign host name is kimhan_
+_create new container name kimhan from build named kimmy assign host name is kimhan_<br />
 
 
 gcc csine.c -o hello -lm
-_compile csine to hello.out. which include libary math_
+_compile csine to hello.out. which include library math_
+alias csine='/root/hello'
+csine<br />
 
-alias csine='/project/hello'
+python3 np2pd.py<br />
 
-
-csine
-python3 np2pd.py
 wget https://files.grouplens.org/datasets/movielens/ml-latest-small.zip
 unzip ml-latest-small.zip
-cd ml-latest-small
+cd ml-latest-small<br />
 
 cat ratings.csv | cut -d ',' -f3 | grep -c '5.0'
 cat ratings.csv | cut -d ',' -f3 | grep -c '4.0'
 cat ratings.csv | cut -d ',' -f3 | grep -c '1.0'
-cat ratings.csv | cut -d ',' -f3 | grep -c '0.5'
+cat ratings.csv | cut -d ',' -f3 | grep -c '0.5'<br />
 
 cat ratings.csv | awk -F ',' '$3 == "0.5"'
-cat ratings.csv | awk -F ',' '$3 == "0.5"' | sort -t ',' -k 2n > kuy.txt
+cat ratings.csv | awk -F ',' '$3 == "0.5"' | sort -t ',' -k 2n > kuy.txt<br />
 
 head kuy.txt -n 15
-tail kuy.txt -n 15
+tail kuy.txt -n 15<br />
 
 cd ..
 gcc afork.c && ./a.out && rm a.out
-gcc bfork.c && ./a.out && rm a.out
+gcc bfork.c && ./a.out && rm a.out<br />
