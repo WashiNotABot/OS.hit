@@ -1,10 +1,17 @@
 <!-- COMMAND LISTS -->
-docker build -t kimmy .
-_build docker file name kimmy in current path_
+**docker build -t kimmy .**<br />
+_build docker file name kimmy in current path_<br />
+
 docker run -h kimhan --name kimhan -it kimmy bash
+_create new container name kimhan from build named kimmy assign host name is kimhan_
+
 
 gcc csine.c -o hello -lm
+_compile csine to hello.out. which include libary math_
+
 alias csine='/project/hello'
+
+
 hello
 python3 np2pd.py
 wget https://files.grouplens.org/datasets/movielens/ml-latest-small.zip
