@@ -12,7 +12,7 @@ _compile csine to hello.out. which include libary math_
 alias csine='/project/hello'
 
 
-hello
+csine
 python3 np2pd.py
 wget https://files.grouplens.org/datasets/movielens/ml-latest-small.zip
 unzip ml-latest-small.zip
