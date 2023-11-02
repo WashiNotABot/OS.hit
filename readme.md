@@ -21,12 +21,12 @@ RUN apt update && apt install -y sudo python3 python3-pip gcc wget nano unzip &&
 CMD ["/bin/bash"]
 ```
 
-### ทำการ build image ชื่อ kimhun
+### ทำการ build image ชื่อ kimhan
 ```
 docker build -t kimhan .
 ```
 
-### สร้าง container ชื่อ kimhun_container จาก image ชื่อ kimhun ชื่อ host ชื่อ kimhun และเข้าไปใน terminal ของตัวเครื่อง
+### สร้าง container ชื่อ kimhan_container จาก image ชื่อ kimhan ชื่อ host ชื่อ kimhan และเข้าไปใน terminal ของตัวเครื่อง
 ```
 docker run -h kimhan --name kimhan_container -it kimhan bash
 ```
