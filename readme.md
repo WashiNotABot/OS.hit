@@ -1,34 +1,78 @@
-<!-- COMMAND LISTS -->
-docker build -t kimmy .<br />
-_#build docker file name kimmy in current path_<br />
+<!-- COMMAND LISTS --> 
+## ชื่อนักศึกษา และ link video
+#### 65090500405    เจษฎา    ปราณี
+#### 65090500431    คิมหันต์    จงใจดี
+#### 65090500448    พิชญุตม์    สมบัติ
+#### 65090500450    สถาปนา    ตินพ
+#### 65090500456    ภิรดา     เซ็มแม้นหมัด
 
-docker run -h kimhan --name kimhan -it kimmy bash<br />
-_#create new container name kimhan from build named kimmy assign host name is kimhan_<br />
+## ส่วน script และ dockerfile
+### 1.1 ใช้ ubuntu รุ่นล่าสุด (FROM ubuntu:latest )
+### 1.2 ส่งโค้ดภาษา C ชื่อ csine.c (COPY . /root)
+### 1.3 ส่งโค้ดภาษา Python ชื่อ np2pd.py (COPY . /root)
+### 1.4 Python, Editor, C Compiler, sudo โหลดมาพร้อม (บรรทัด run)
+```
+FROM ubuntu:latest 
+WORKDIR /root
+COPY . /root
+USER root
+ENV PATH="${PATH}:."
+RUN apt update && apt install -y sudo python3 python3-pip gcc wget nano unzip && pip3 install -r requirements.txt
+CMD ["/bin/bash"]
+```
 
+### ทำการ build image ชื่อ kimhun
+```
+docker build -t kimhun .
+```
 
-gcc csine.c -o hello -lm<br />
+### สร้าง container ชื่อ kimhan__containe จาก image ชื่อ kimhun ชื่อ host ชื่อ kimhun และเข้าไปใน terminal ของตัวเครื่อง
+```
+docker run -h kimhan --name kimhan__containe -it kimhun bash
+```
+
+### 1.5 คอมไพล์ csine.c ข้างต้น ให้ได้โปรแกรมชื่อ hello แล้วสั่งให้ทํางานเพื่อทดสอบ โดยการเรียก csine โดยตรง
+```
+gcc csine.c -o hello -lm
+alias csine='/root/hello'
+csine
+```
 _#compile csine to hello.out. which include library math_<br />
 
-alias csine='/root/hello'<br />
-csine<br />
 
-python3 np2pd.py<br />
+### 1.6 ส่งโค้ดภาษา Python ชื่อ np2pd.py ดังต่อไปนี้ เข้าไปเพื่อทดสอบ
+```
+python3 np2pd.py
+```
+### 1.7 download file from https://files.grouplens.org/datasets/movielens/ml-latest-small.zip 
+### 1.8 unzip file
+```
+wget https://files.grouplens.org/datasets/movielens/ml-latest-small.zip
+unzip ml-latest-small.zip
+cd ml-latest-small
+cat ratings.csv
+```
+### 1.9 หาจำนวนผู้ให้ ratings ที่ให้ 5.0 4.0 1.0 0.5 ตามลำดับ
+```
+cat ratings.csv | cut -d ',' -f3 | grep -c '5.0'
+cat ratings.csv | cut -d ',' -f3 | grep -c '4.0'
+cat ratings.csv | cut -d ',' -f3 | grep -c '1.0'
+cat ratings.csv | cut -d ',' -f3 | grep -c '0.5'
+```
+### 1.10 คัดกรอง rating 0.5 และเรียงตาม movieID แล้วบันทึกลงไฟล์ชื่อ query.txt พร้อม โชว์ไฟล์ส่วนต้น และ ส่วนท้าย มา 15 บรรทัด
+```
+cat ratings.csv | awk -F ',' '$3 == "0.5"'
+cat ratings.csv | awk -F ',' '$3 == "0.5"' | sort -t ',' -k 2n > query.txt
 
-wget https://files.grouplens.org/datasets/movielens/ml-latest-small.zip<br />
-unzip ml-latest-small.zip<br />
-cd ml-latest-small<br />
-
-cat ratings.csv | cut -d ',' -f3 | grep -c '5.0'<br />
-cat ratings.csv | cut -d ',' -f3 | grep -c '4.0'<br />
-cat ratings.csv | cut -d ',' -f3 | grep -c '1.0'<br />
-cat ratings.csv | cut -d ',' -f3 | grep -c '0.5'<br />
-
-cat ratings.csv | awk -F ',' '$3 == "0.5"'<br />
-cat ratings.csv | awk -F ',' '$3 == "0.5"' | sort -t ',' -k 2n > kuy.txt<br />
-
-head kuy.txt -n 15<br />
-tail kuy.txt -n 15<br />
-
-cd ..<br />
-gcc afork.c && ./a.out && rm a.out<br />
-gcc bfork.c && ./a.out && rm a.out<br /><br />
+head query.txt -n 15
+tail query.txt -n 15
+```
+### 2.0 ออกจาก ml-latest-small และ ทำการ compile file afork.c และ execute ทันที และลบ a.out ทิ้ง
+```
+cd ..
+gcc afork.c && ./a.out && rm a.out
+```
+### 3.0 ทำการ compile file bfork.c และ execute ทันที และลบ a.out ทิ้ง
+```
+gcc bfork.c && ./a.out && rm a.out
+```
