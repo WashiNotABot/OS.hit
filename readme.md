@@ -11,15 +11,7 @@
 ### 1.2 ส่งโค้ดภาษา C ชื่อ csine.c (COPY . /root)
 ### 1.3 ส่งโค้ดภาษา Python ชื่อ np2pd.py (COPY . /root)
 ### 1.4 Python, Editor, C Compiler, sudo โหลดมาพร้อม (บรรทัด run)
-```
-FROM ubuntu:latest 
-WORKDIR /root
-COPY . /root
-USER root
-ENV PATH="${PATH}:."
-RUN apt update && apt install -y sudo python3 python3-pip gcc wget nano unzip && pip3 install -r requirements.txt
-CMD ["/bin/bash"]
-```
+
 
 ### ทำการ build image ชื่อ kimhan
 ```
@@ -50,7 +42,6 @@ python3 np2pd.py
 wget https://files.grouplens.org/datasets/movielens/ml-latest-small.zip
 unzip ml-latest-small.zip
 cd ml-latest-small
-cat ratings.csv
 ```
 ### 1.9 หาจำนวนผู้ให้ ratings ที่ให้ 5.0 4.0 1.0 0.5 ตามลำดับ
 ```
@@ -61,7 +52,6 @@ cat ratings.csv | cut -d ',' -f3 | grep -c '0.5'
 ```
 ### 1.10 คัดกรอง rating 0.5 และเรียงตาม movieID แล้วบันทึกลงไฟล์ชื่อ query.txt พร้อม โชว์ไฟล์ส่วนต้น และ ส่วนท้าย มา 15 บรรทัด
 ```
-cat ratings.csv | awk -F ',' '$3 == "0.5"'
 cat ratings.csv | awk -F ',' '$3 == "0.5"' | sort -t ',' -k 2n > query.txt
 
 head query.txt -n 15
