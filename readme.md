@@ -26,9 +26,9 @@ CMD ["/bin/bash"]
 docker build -t kimhun .
 ```
 
-### สร้าง container ชื่อ kimhan__containe จาก image ชื่อ kimhun ชื่อ host ชื่อ kimhun และเข้าไปใน terminal ของตัวเครื่อง
+### สร้าง container ชื่อ kimhun__containe จาก image ชื่อ kimhun ชื่อ host ชื่อ kimhun และเข้าไปใน terminal ของตัวเครื่อง
 ```
-docker run -h kimhan --name kimhan__containe -it kimhun bash
+docker run -h kimhun --name kimhun__containe -it kimhun bash
 ```
 
 ### 1.5 คอมไพล์ csine.c ข้างต้น ให้ได้โปรแกรมชื่อ hello แล้วสั่งให้ทํางานเพื่อทดสอบ โดยการเรียก csine โดยตรง
